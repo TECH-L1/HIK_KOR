@@ -323,11 +323,102 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .analytics-card p {
-            margin: 0;
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 24px;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+            text-align: center;
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .download-card:hover::before {
+            left: 100%;
+        }
+
+        .download-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.6);
+        }
+
+        .download-card h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-card .version {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .download-card p {
+            margin: 0 0 2rem 0;
             opacity: 0.95;
             font-size: 1.05rem;
             line-height: 1.5;
+        }
+
+        .download-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.4s ease;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         /* 반응형 디자인 */
@@ -411,7 +502,7 @@
                 <div class="hero-visual">
                     <div class="feature-grid">
                         <div class="feature-card">
-                            <span class="feature-icon">📹</span>
+                            <span class="feature-icon">📺</span>
                             <h3>Video Management</h3>
                             <p>실시간 영상 관리 및 재생</p>
                         </div>
@@ -660,6 +751,47 @@
                                     <li>보안 이벤트 실시간 모니터링 및 알림</li>
                                 </ul>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('download')">
+                    <h2>소프트웨어 다운로드</h2>
+                    <div class="toggle-icon" id="toggle-download">+</div>
+                </div>
+                <div class="section-content" id="download-content">
+                    <div class="content-inner">
+                        <div class="download-grid">
+                            <div class="download-card">
+                                <h3>💾 HikCentral Professional LTS</h3>
+                                <div class="version">Version 2.6.2 - Long Term Support</div>
+                                <p>안정성과 장기 지원이 보장되는 LTS 버전입니다. 운영 환경에서 권장되는 버전입니다.</p>
+                                <a href="https://www.hikvision.com/en/support/download/software/hikcentral-professional-v2-6-2/" 
+                                   class="download-btn" target="_blank">
+                                   🔽 LTS 버전 다운로드
+                                </a>
+                            </div>
+                            <div class="download-card">
+                                <h3>🚀 HikCentral Professional Latest</h3>
+                                <div class="version">Version 3.0.0 - Latest Features</div>
+                                <p>최신 기능과 개선사항이 포함된 최신 버전입니다. 새로운 기능을 체험하고 싶다면 선택하세요.</p>
+                                <a href="https://www.hikvision.com/en/support/download/software/hikcentral-professional-v3-0-0/" 
+                                   class="download-btn" target="_blank">
+                                   ⬇️ 최신 버전 다운로드
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 3rem; padding: 2rem; background: rgba(59, 130, 246, 0.1); border-radius: 16px; border-left: 4px solid #3b82f6;">
+                            <h4 style="color: #3b82f6; margin: 0 0 1rem 0; font-size: 1.2rem;">📋 다운로드 전 확인사항</h4>
+                            <ul style="color: #e2e8f0; margin: 0; padding-left: 1.5rem;">
+                                <li>시스템 요구사항을 미리 확인하세요</li>
+                                <li>기존 버전이 설치되어 있다면 백업을 권장합니다</li>
+                                <li>라이선스 정보를 미리 준비해주세요</li>
+                                <li>설치 가이드를 참조하여 올바르게 설치하세요</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
