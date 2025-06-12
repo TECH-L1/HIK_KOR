@@ -414,11 +414,70 @@
             left: 100%;
         }
 
-        .download-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
+        .video-category {
+            margin-bottom: 3rem;
+        }
+
+        .video-category h4 {
+            color: #3b82f6;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .video-btn {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(59, 130, 246, 0.1));
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            transition: all 0.3s ease;
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .video-btn:hover::before {
+            left: 100%;
+        }
+
+        .video-btn:hover {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(59, 130, 246, 0.15));
+            border-color: #22c55e;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .video-btn .video-icon {
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .video-btn .video-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
 
         /* 반응형 디자인 */
@@ -441,6 +500,14 @@
             
             .spec-grid {
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .download-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
 
@@ -486,6 +553,23 @@
             
             .analytics-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-btn {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .video-category h4 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -634,7 +718,7 @@
                 <div class="section-content" id="devices-content">
                     <div class="content-inner">
                         <div class="device-list">
-                            <div class="device-item">📹 감시장치 (IP Camera & NVR)</div>
+                            <div class="device-item">📺 감시장치 (IP Camera & NVR)</div>
                             <div class="device-item">🚪 출입 통제 장치 (Door Station)</div>
                             <div class="device-item">🏠 실내 스테이션 (Indoor Station)</div>
                             <div class="device-item">🚨 보안 통제 장치 (Alarm Panel)</div>
@@ -791,6 +875,354 @@
                                 <li>기존 버전이 설치되어 있다면 백업을 권장합니다</li>
                                 <li>라이선스 정보를 미리 준비해주세요</li>
                                 <li>설치 가이드를 참조하여 올바르게 설치하세요</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('videos')">
+                    <h2>🎬 운영 교육 비디오</h2>
+                    <div class="toggle-icon" id="toggle-videos">+</div>
+                </div>
+                <div class="section-content" id="videos-content">
+                    <div class="content-inner">
+                        
+                        <!-- 기본 운영 -->
+                        <div class="video-category">
+                            <h4>🏗️ 기본 운영 (Basic Operation)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/kJUJMsf9laY" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔧</span>
+                                    <span class="video-title">HikCentral Pro 서버 설치 방법</span>
+                                </a>
+                                <a href="https://youtu.be/Cn-HLm1CSgw" target="_blank" class="video-btn">
+                                    <span class="video-icon">📡</span>
+                                    <span class="video-title">스트리밍 서비스 추가 방법</span>
+                                </a>
+                                <a href="https://youtu.be/pPDUvGMYjdA" target="_blank" class="video-btn">
+                                    <span class="video-icon">💾</span>
+                                    <span class="video-title">pStor 추가 방법</span>
+                                </a>
+                                <a href="https://youtu.be/Ge-gVwdyn7o" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔐</span>
+                                    <span class="video-title">계정 및 보안 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/Qrpu9iuSl70" target="_blank" class="video-btn">
+                                    <span class="video-icon">🎛️</span>
+                                    <span class="video-title">제어 클라이언트 제어판 수정 방법</span>
+                                </a>
+                                <a href="https://youtu.be/Ja1DIu9KN1Q" target="_blank" class="video-btn">
+                                    <span class="video-icon">🛠️</span>
+                                    <span class="video-title">워크벤치 설정 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 제어실 -->
+                        <div class="video-category">
+                            <h4>🏢 제어실 (Control Room)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/-kEa4d_0dEY" target="_blank" class="video-btn">
+                                    <span class="video-icon">🚨</span>
+                                    <span class="video-title">이벤트 및 경보 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/MuXXa9tGuAY" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔧</span>
+                                    <span class="video-title">스마트 스위치 없이 유지보수 방법</span>
+                                </a>
+                                <a href="https://youtu.be/QB9UbajlsUs" target="_blank" class="video-btn">
+                                    <span class="video-icon">📡</span>
+                                    <span class="video-title">레이더 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/dq5ayfOoNto" target="_blank" class="video-btn">
+                                    <span class="video-icon">🛡️</span>
+                                    <span class="video-title">보안 제어 장치 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/C4k1HwhllWw" class="video-btn">
+                                    <span class="video-icon">📺</span>
+                                    <span class="video-title">C10S 컨트롤러와 스마트 월 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/9rYRxEyymDQ" target="_blank" class="video-btn">
+                                    <span class="video-icon">📺</span>
+                                    <span class="video-title">69XX 디코더와 스마트 월 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/5hMKXwGwjE8" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔊</span>
+                                    <span class="video-title">IP 스피커 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/R3FIU_kiFB0" target="_blank" class="video-btn">
+                                    <span class="video-icon">⚙️</span>
+                                    <span class="video-title">AX Pro 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/0AdSomm_Tz0" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔧</span>
+                                    <span class="video-title">스마트 관리 스위치 유지보수 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 차량 및 주차 -->
+                        <div class="video-category">
+                            <h4>🚗 차량 및 주차 (Vehicle and Parking)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/MUidiC4Py2o" target="_blank" class="video-btn">
+                                    <span class="video-icon">🚪</span>
+                                    <span class="video-title">출입 관리 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/kye-rmEC3sw" target="_blank" class="video-btn">
+                                    <span class="video-icon">🅿️</span>
+                                    <span class="video-title">주차장 관리 방법</span>
+                                </a>
+                                <a href="https://youtu.be/g3qEIQWaLUw" target="_blank" class="video-btn">
+                                    <span class="video-icon">🧭</span>
+                                    <span class="video-title">주차 안내 시스템 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/tXeUO2cuEGo" target="_blank" class="video-btn">
+                                    <span class="video-icon">💰</span>
+                                    <span class="video-title">주차 요금 규칙 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/VbwXIIor_k4" target="_blank" class="video-btn">
+                                    <span class="video-icon">🎫</span>
+                                    <span class="video-title">티켓 발행기와 주차 요금 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/7iFfB0BO6HE" target="_blank" class="video-btn">
+                                    <span class="video-icon">🖥️</span>
+                                    <span class="video-title">조회 터미널 작동 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 보안 검사 -->
+                        <div class="video-category">
+                            <h4>🔍 보안 검사 (Security Inspection)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/IoU9GqsgDlo" target="_blank" class="video-btn">
+                                    <span class="video-icon">🛡️</span>
+                                    <span class="video-title">스마트 보안 검사 작동 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 비디오 보안 -->
+                        <div class="video-category">
+                            <h4>📺 비디오 보안 (Video Security)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/5jMQ-OyT3kA" target="_blank" class="video-btn">
+                                    <span class="video-icon">📹</span>
+                                    <span class="video-title">실시간 비디오 확인 방법</span>
+                                </a>
+                                <a href="https://youtu.be/fyIJC354T9Y" target="_blank" class="video-btn">
+                                    <span class="video-icon">👁️</span>
+                                    <span class="video-title">시각적 추적 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/G6FVHRAu81A" target="_blank" class="video-btn">
+                                    <span class="video-icon">🗺️</span>
+                                    <span class="video-title">지도 구성 방법</span>
+                                </a>
+                                <a href="https://youtu.be/LIRkGK8eS8Y" target="_blank" class="video-btn">
+                                    <span class="video-icon">▶️</span>
+                                    <span class="video-title">재생 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/YWha1v1OEu0" target="_blank" class="video-btn">
+                                    <span class="video-icon">📋</span>
+                                    <span class="video-title">증거 수집 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/9nUfOZTa0KA" target="_blank" class="video-btn">
+                                    <span class="video-icon">🌐</span>
+                                    <span class="video-title">RSM 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/m8_OnI_TSGs" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔗</span>
+                                    <span class="video-title">Hik ProConnect 장치 추가 방법</span>
+                                </a>
+                                <a href="https://youtu.be/UBOIaVC-Lck" target="_blank" class="video-btn">
+                                    <span class="video-icon">⏰</span>
+                                    <span class="video-title">캡처 스케줄 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/8jvpx78QBuk" target="_blank" class="video-btn">
+                                    <span class="video-icon">🥽</span>
+                                    <span class="video-title">AR 모니터링 작동 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 지능형 분석 -->
+                        <div class="video-category">
+                            <h4>🤖 지능형 분석 (Intelligence)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/Pp-vWkUOuzU" target="_blank" class="video-btn">
+                                    <span class="video-icon">👤</span>
+                                    <span class="video-title">얼굴 인식 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/4wUlSUA27oA" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔍</span>
+                                    <span class="video-title">인물 검색 기능 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/1-rSrmMp2rs" target="_blank" class="video-btn">
+                                    <span class="video-icon">📊</span>
+                                    <span class="video-title">인물 빈도 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/QOtRmUKJS_o" target="_blank" class="video-btn">
+                                    <span class="video-icon">📁</span>
+                                    <span class="video-title">아카이브 분석 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/FFRvT43Xldg" target="_blank" class="video-btn">
+                                    <span class="video-icon">🚗</span>
+                                    <span class="video-title">차량 분석 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/IyIGGBD5vQ0" class="video-btn">
+                                    <span class="video-icon">👥</span>
+                                    <span class="video-title">인원 집계 보고서 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/LDzHrND5UoM" target="_blank" class="video-btn">
+                                    <span class="video-icon">📈</span>
+                                    <span class="video-title">인원 밀도 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/uR1V5Xy5mFQ" target="_blank" class="video-btn">
+                                    <span class="video-icon">🌡️</span>
+                                    <span class="video-title">열화상 카메라를 통한 온도 분석 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/IyIGGBD5vQ0" target="_blank" class="video-btn">
+                                    <span class="video-icon">📋</span>
+                                    <span class="video-title">인물 특성 분석 보고서 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/LDzHrND5UoM" target="_blank" class="video-btn">
+                                    <span class="video-icon">⏱️</span>
+                                    <span class="video-title">대기열 분석 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/0yGXLmBPtNw" target="_blank" class="video-btn">
+                                    <span class="video-icon">🎬</span>
+                                    <span class="video-title">지능형 분석 시나리오 설정 방법</span>
+                                </a>
+                                <a href="https://youtu.be/5nyUkkqxVAI" target="_blank" class="video-btn">
+                                    <span class="video-icon">🏪</span>
+                                    <span class="video-title">리테일 스토어 솔루션 관리 방법</span>
+                                </a>
+                                <a href="https://youtu.be/QZKk6MtAcC8" target="_blank" class="video-btn">
+                                    <span class="video-icon">📊</span>
+                                    <span class="video-title">매장 보고서 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/KlRIxYYJ4-g" target="_blank" class="video-btn">
+                                    <span class="video-icon">👥</span>
+                                    <span class="video-title">공공 시나리오 인원 집계 그룹 작동 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 출입 통제 -->
+                        <div class="video-category">
+                            <h4>🚪 출입 통제 (Access Control)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/fSevGvXmGj8" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔐</span>
+                                    <span class="video-title">출입 통제 관리 방법</span>
+                                </a>
+                                <a href="https://youtu.be/mc_cZPynT5o" target="_blank" class="video-btn">
+                                    <span class="video-icon">👤</span>
+                                    <span class="video-title">인원 관리 방법</span>
+                                </a>
+                                <a href="https://youtu.be/uFBLJMxkTBs" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔢</span>
+                                    <span class="video-title">PIN 코드로 문 열기 방법</span>
+                                </a>
+                                <a href="https://youtu.be/uFBLJMxkTBs" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔄</span>
+                                    <span class="video-title">안티패스백 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/eDmYVr5-S3k" target="_blank" class="video-btn">
+                                    <span class="video-icon">📅</span>
+                                    <span class="video-title">출석 관리 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/mwwIZb2qzcI" target="_blank" class="video-btn">
+                                    <span class="video-icon">📹</span>
+                                    <span class="video-title">비디오 인터콤 장치 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/TBpf2W1WVrY" target="_blank" class="video-btn">
+                                    <span class="video-icon">🎫</span>
+                                    <span class="video-title">방문자 관리 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/ypMl0bJfLIo" target="_blank" class="video-btn">
+                                    <span class="video-icon">🚨</span>
+                                    <span class="video-title">비상 집결 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/F_4EJlWGMu4" target="_blank" class="video-btn">
+                                    <span class="video-icon">📝</span>
+                                    <span class="video-title">휴가 신청 및 승인 방법</span>
+                                </a>
+                                <a href="https://youtu.be/WePXYQYqlf0" target="_blank" class="video-btn">
+                                    <span class="video-icon">📱</span>
+                                    <span class="video-title">모바일 출석 설정 및 적용 방법</span>
+                                </a>
+                                <a href="https://youtu.be/yKgQNHqbV5g" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔄</span>
+                                    <span class="video-title">애플리케이션 플로우 관리 방법</span>
+                                </a>
+                                <a href="https://youtu.be/wHZKcJuXavw" target="_blank" class="video-btn">
+                                    <span class="video-icon">📶</span>
+                                    <span class="video-title">블루투스 문 열기 설정 및 적용 방법</span>
+                                </a>
+                                <a href="https://youtu.be/p712v9ga3JU" target="_blank" class="video-btn">
+                                    <span class="video-icon">🌐</span>
+                                    <span class="video-title">원격 사이트 RSM과 출입 통제 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/VuF0Jq8xhZg" target="_blank" class="video-btn">
+                                    <span class="video-icon">🚶</span>
+                                    <span class="video-title">순찰 작동 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 상업용 디스플레이 -->
+                        <div class="video-category">
+                            <h4>📺 상업용 디스플레이 (Commercial Display)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/ssgPpz2GQOg" target="_blank" class="video-btn">
+                                    <span class="video-icon">📺</span>
+                                    <span class="video-title">IFP 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/vorvZfGx844" target="_blank" class="video-btn">
+                                    <span class="video-icon">🖥️</span>
+                                    <span class="video-title">디지털 사이니지와 비디오 월 프로그램 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/LOO-5rWjoV0" target="_blank" class="video-btn">
+                                    <span class="video-icon">🖥️</span>
+                                    <span class="video-title">디지털 사이니지 터미널 관리 방법</span>
+                                </a>
+                                <a href="https://youtu.be/CdmlTEynVe8" target="_blank" class="video-btn">
+                                    <span class="video-icon">📤</span>
+                                    <span class="video-title">프로그램 배포 방법</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- 휴대용 단속 -->
+                        <div class="video-category">
+                            <h4>📹 휴대용 단속 (Portable Enforcement)</h4>
+                            <div class="video-grid">
+                                <a href="https://youtu.be/9DYiaphUqsg" target="_blank" class="video-btn">
+                                    <span class="video-icon">🔌</span>
+                                    <span class="video-title">도크 스테이션과 증거 관리 작동 방법</span>
+                                </a>
+                                <a href="https://youtu.be/ChauHqo4kFA" target="_blank" class="video-btn">
+                                    <span class="video-icon">📹</span>
+                                    <span class="video-title">휴대용 단속 작동 방법</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 3rem; padding: 2rem; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border-left: 4px solid #22c55e;">
+                            <h4 style="color: #22c55e; margin: 0 0 1rem 0; font-size: 1.2rem;">📽️ 교육 비디오 안내</h4>
+                            <p style="color: #e2e8f0; margin: 0 0 1rem 0;">
+                                위의 모든 교육 비디오는 Hikvision 공식 웹사이트에서 제공됩니다. 각 버튼을 클릭하면 해당 다운로드 페이지로 이동하며, 
+                                페이지에서 "Operation Video" 섹션을 확인하실 수 있습니다.
+                            </p>
+                            <ul style="color: #cbd5e1; margin: 0; padding-left: 1.5rem;">
+                                <li>모든 비디오는 영어로 제작되었습니다</li>
+                                <li>실제 운영 환경에서의 step-by-step 가이드를 제공합니다</li>
+                                <li>각 기능별로 상세한 설정 방법을 안내합니다</li>
+                                <li>최신 버전 기준으로 제작된 교육 자료입니다</li>
                             </ul>
                         </div>
                     </div>
