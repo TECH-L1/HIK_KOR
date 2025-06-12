@@ -1,1 +1,717 @@
-# HIK_KOR
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HikCentral Professional - 통합 보안 관리 플랫폼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #ffffff;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            overflow-x: hidden;
+        }
+
+        .hikcentral-container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 6rem 4rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 70%, #475569 100%);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M 8 0 L 0 0 0 8" fill="none" stroke="%23334155" stroke-width="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text p {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            line-height: 1.4;
+            max-width: 90%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 60px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(102, 126, 234, 0.6);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .feature-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(59, 130, 246, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: #cbd5e1;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 6rem 4rem;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 3rem;
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-header:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .toggle-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+            font-weight: bold;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 0 0 24px 24px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-top: none;
+        }
+
+        .section-content.expanded {
+            max-height: 3000px;
+        }
+
+        .content-inner {
+            padding: 3rem;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .spec-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.1));
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.3);
+        }
+
+        .spec-title {
+            font-weight: 800;
+            color: #3b82f6;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .spec-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .spec-card li {
+            padding: 0.5rem 0;
+            color: #e2e8f0;
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .spec-card li:last-child {
+            border-bottom: none;
+        }
+
+        .device-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .device-item {
+            background: rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border-left: 5px solid #3b82f6;
+            transition: all 0.4s ease;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .device-item:hover {
+            background: rgba(59, 130, 246, 0.25);
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .analytics-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(240, 147, 251, 0.4);
+        }
+
+        .analytics-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(240, 147, 251, 0.5);
+        }
+
+        .analytics-card h3 {
+            margin: 0 0 1.5rem 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .analytics-card p {
+            margin: 0;
+            opacity: 0.95;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 4rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 4rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            .spec-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 2rem;
+                min-height: 80vh;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text p {
+                font-size: 1.2rem;
+                max-width: 100%;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+            
+            .main-content {
+                padding: 3rem 2rem;
+            }
+            
+            .section-header {
+                padding: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .device-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hikcentral-container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>HikCentral Professional</h1>
+                    <p>비디오, 출입 통제, 보안 관리를 하나의 플랫폼에서 통합 관리하는 차세대 Security Management System</p>
+                    <button class="cta-button" onclick="scrollToContent()">자세히 알아보기</button>
+                </div>
+                <div class="hero-visual">
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">📹</span>
+                            <h3>Video Management</h3>
+                            <p>실시간 영상 관리 및 재생</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🚪</span>
+                            <h3>Access Control</h3>
+                            <p>출입 통제 및 권한 관리</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🔔</span>
+                            <h3>Alarm System</h3>
+                            <p>경보 모니터링 및 알림</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🚗</span>
+                            <h3>Vehicle Management</h3>
+                            <p>차량 관리 및 ANPR</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🤖</span>
+                            <h3>AI Analytics</h3>
+                            <p>스마트 분석 및 인식</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📊</span>
+                            <h3>Advanced Reporting</h3>
+                            <p>통합 리포팅 및 대시보드</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main class="main-content" id="main-content">
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('overview')">
+                    <h2>HikCentral Professional 개요</h2>
+                    <div class="toggle-icon" id="toggle-overview">+</div>
+                </div>
+                <div class="section-content" id="overview-content">
+                    <div class="content-inner">
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #e2e8f0;"><strong>HikCentral Professional</strong>은 비디오, 출입 통제, 보안 관리 및 기타 다양한 시스템을 통합하여 중앙에서 관리할 수 있도록 지원하는 통합 보안 관리 플랫폼입니다.</p>
+                        
+                        <h3 style="color: #3b82f6; margin: 3rem 0 2rem 0; font-size: 1.8rem;">핵심 기능</h3>
+                        <div class="spec-grid">
+                            <div class="spec-card">
+                                <div class="spec-title">🔧 장치 관리 (Device Management)</div>
+                                <p>다양한 보안 장치들의 통합 관리 및 실시간 모니터링</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">👥 사용자 & 차량 관리</div>
+                                <p>사용자 권한 설정 및 차량 출입 관리 시스템</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">🏢 구역 관리 (Zone Management)</div>
+                                <p>건물 및 구역별 세분화된 보안 정책 적용</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">🚪 출입 통제 (Access Control)</div>
+                                <p>출입 권한 관리 및 출퇴근 시스템 연동</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">🚨 경보 모니터링 (Alarm Management)</div>
+                                <p>실시간 이벤트 감지 및 즉시 알림 시스템</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">🤖 스마트 분석 (AI Analytics)</div>
+                                <p>AI 기반 영상 분석 및 행동 패턴 인식</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('requirements')">
+                    <h2>System Requirements</h2>
+                    <div class="toggle-icon" id="toggle-requirements">+</div>
+                </div>
+                <div class="section-content" id="requirements-content">
+                    <div class="content-inner">
+                        <div class="spec-grid">
+                            <div class="spec-card">
+                                <div class="spec-title">💻 운영체제 (Operating System)</div>
+                                <ul>
+                                    <li>Windows 11 (64비트)</li>
+                                    <li>Windows 10 (64비트)</li>
+                                    <li>Windows Server 2025, 2022, 2019, 2016</li>
+                                    <li>Windows Server 2012 R2, 2012 (모두 64비트)</li>
+                                </ul>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">⚙️ 하드웨어 (독립형 시스템)</div>
+                                <ul>
+                                    <li><strong>CPU:</strong> Intel® Core™ i5-8500 이상</li>
+                                    <li><strong>RAM:</strong> 8GB 이상 권장</li>
+                                    <li><strong>Storage:</strong> 650GB 이상 (SATA 7200 RPM Enterprise)</li>
+                                    <li><strong>Network:</strong> Gigabit Ethernet 권장</li>
+                                </ul>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">🏢 클러스터 구성 (Enterprise)</div>
+                                <ul>
+                                    <li><strong>CPU:</strong> Intel® Xeon® Silver 4309Y *2</li>
+                                    <li><strong>RAM:</strong> 64GB 이상</li>
+                                    <li><strong>고가용성:</strong> Load Balancing 지원</li>
+                                    <li><strong>확장성:</strong> 최대 100,000대 카메라 지원</li>
+                                </ul>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">🌐 웹 클라이언트 호환성</div>
+                                <ul>
+                                    <li>Firefox® (최신 버전)</li>
+                                    <li>Google Chrome® (최신 버전)</li>
+                                    <li>Microsoft Edge® (최신 버전)</li>
+                                    <li>Safari® (최신 버전)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('devices')">
+                    <h2>지원 장치 (Supported Devices)</h2>
+                    <div class="toggle-icon" id="toggle-devices">+</div>
+                </div>
+                <div class="section-content" id="devices-content">
+                    <div class="content-inner">
+                        <div class="device-list">
+                            <div class="device-item">📹 감시장치 (IP Camera & NVR)</div>
+                            <div class="device-item">🚪 출입 통제 장치 (Door Station)</div>
+                            <div class="device-item">🏠 실내 스테이션 (Indoor Station)</div>
+                            <div class="device-item">🚨 보안 통제 장치 (Alarm Panel)</div>
+                            <div class="device-item">📡 레이더 시스템 (Radar Detection)</div>
+                            <div class="device-item">🔍 안전 검사 장치 (Security Scanner)</div>
+                            <div class="device-item">🌐 네트워크 전송 장치 (Network Device)</div>
+                            <div class="device-item">💽 녹화 서버 (Recording Server)</div>
+                            <div class="device-item">📺 스트리밍 서버 (Streaming Server)</div>
+                            <div class="device-item">🤖 스마트 분석 서버 (AI Analytics Server)</div>
+                            <div class="device-item">💡 LED Controller (Lighting Control)</div>
+                            <div class="device-item">🔌 BACnet 호환 장치 (Building Automation)</div>
+                            <div class="device-item">📊 Modbus 프로토콜 장치 (Industrial Protocol)</div>
+                            <div class="device-item">🚗 차량 감시 시스템 (UVSS - Under Vehicle)</div>
+                            <div class="device-item">📱 스마트 월 디스플레이 (Video Wall)</div>
+                            <div class="device-item">🔊 IP 스피커 시스템 (Audio Broadcasting)</div>
+                            <div class="device-item">🛗 엘리베이터 통제 장치 (Elevator Control)</div>
+                            <div class="device-item">📱 지침 터미널 (Information Kiosk)</div>
+                            <div class="device-item">🖥️ 디지털 사이니지 (Digital Display)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('analytics')">
+                    <h2>Smart Analytics & Reporting</h2>
+                    <div class="toggle-icon" id="toggle-analytics">+</div>
+                </div>
+                <div class="section-content" id="analytics-content">
+                    <div class="content-inner">
+                        <div class="analytics-grid">
+                            <div class="analytics-card">
+                                <h3>🌡️ 체온 측정 & 헬스케어</h3>
+                                <p>피부 표면 온도 측정, 발열자 감지 및 기록 검색 시스템</p>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>🚗 지능형 차량 관리</h3>
+                                <p>차량 목록 및 차단 목록 관리, 번호판 기반 검색 및 추적</p>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>🎥 PTZ 카메라 제어</h3>
+                                <p>원격 PTZ 카메라 제어 권한 설정 및 자동 추적</p>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>📊 고급 데이터 분석</h3>
+                                <p>이벤트 키워드 검색 (AND, OR 연산자 지원) 및 통계 분석</p>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>👤 인물 인식 & 추적</h3>
+                                <p>자주 출현하는 인물 분석, 얼굴 인식 및 특성 분석</p>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>🚨 이상 행동 감지</h3>
+                                <p>침입 감지, 밀집도 분석, 폭력 감지 등 비정상 이벤트 탐지</p>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>🗺️ GIS 기반 통합 관리</h3>
+                                <p>지도 기반 시각화 및 지리적 자원 일괄 관리 시스템</p>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>⏱️ 실시간 체류 분석</h3>
+                                <p>체류 시간, 대기열 분석, 인원 집중도 및 동선 분석</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('license')">
+                    <h2>License 관리 & 보안 정책</h2>
+                    <div class="toggle-icon" id="toggle-license">+</div>
+                </div>
+                <div class="section-content" id="license-content">
+                    <div class="content-inner">
+                        <div class="spec-grid">
+                            <div class="spec-card">
+                                <div class="spec-title">🔑 라이선스 활성화 방법</div>
+                                <ul>
+                                    <li><strong>온라인 활성화:</strong> 인터넷을 통한 자동 활성화</li>
+                                    <li><strong>오프라인 활성화:</strong> 요청 파일 생성 → 활성화 코드 입력</li>
+                                    <li><strong>클러스터 라이선스:</strong> 다중 서버 환경 지원</li>
+                                    <li><strong>Trial License:</strong> 30일 평가판 제공</li>
+                                </ul>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">🔓 라이선스 관리</div>
+                                <ul>
+                                    <li>시스템 이전 또는 재설치 시 라이선스 이전</li>
+                                    <li>온라인/오프라인 방식 모두 지원</li>
+                                    <li>라이선스 사용량 실시간 모니터링</li>
+                                    <li>자동 갱신 및 만료 알림 기능</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h3 style="color: #3b82f6; margin: 3rem 0 2rem 0; font-size: 1.8rem;">Enterprise 보안 정책</h3>
+                        <div class="spec-grid">
+                            <div class="spec-card">
+                                <div class="spec-title">🔒 계정 보안 강화</div>
+                                <ul>
+                                    <li>로그인 5회 실패 시 계정 30분 자동 잠금</li>
+                                    <li>최소 8자 이상 복합 패스워드 정책</li>
+                                    <li>대/소문자, 숫자, 특수문자 조합 필수</li>
+                                    <li>2단계 인증 (2FA) 지원</li>
+                                </ul>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-title">⏰ 보안 관리 정책</div>
+                                <ul>
+                                    <li>고보안 환경: 월간 또는 주간 패스워드 변경 권장</li>
+                                    <li>암호 강도 실시간 검증 및 변경 요구</li>
+                                    <li>사용자별 권한 관리 및 접근 로그 기록</li>
+                                    <li>보안 이벤트 실시간 모니터링 및 알림</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function scrollToContent() {
+            document.getElementById('main-content').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const toggle = document.getElementById('toggle-' + sectionId);
+            
+            if (content && toggle) {
+                if (content.classList.contains('expanded')) {
+                    content.classList.remove('expanded');
+                    toggle.textContent = '+';
+                    toggle.style.transform = 'rotate(0deg)';
+                } else {
+                    content.classList.add('expanded');
+                    toggle.textContent = '−';
+                    toggle.style.transform = 'rotate(180deg)';
+                }
+            }
+        }
+
+        // Page load animations and scroll effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.content-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
